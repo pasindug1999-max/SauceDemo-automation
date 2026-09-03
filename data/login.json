@@ -1,0 +1,40 @@
+[
+    {
+        "id":1,
+        "username":"standard_user",
+        "password":"secret_sauce",
+        "valid":true
+        
+    },
+
+    {
+        "id":2,
+        "username":"abcuser",
+        "password":"secret_sauce",
+        "valid":false
+    },
+
+    {
+        "id":3,
+        "username":"standard_user",
+        "password":"abc123",
+        "valid":false
+
+    },
+
+    {
+        "id":4,
+        "username":"xyzuser",
+        "password":"key123",
+        "valid":false
+    },
+
+    {
+        "id":5,
+        "username":"",
+        "password":"",
+        "valid":false
+    }
+
+
+]
