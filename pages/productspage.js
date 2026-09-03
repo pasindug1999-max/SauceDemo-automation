@@ -8,13 +8,31 @@ class Products {
 
     }
 
-    async selectdropdown(option) {
+    async selectPriceLowHigh() {
 
-        await this.dropdown.selectOption(option);
-
-
+        await this.dropdown.selectOption("lohi");
     }
 
+    async selectPriceHighLow() {
+
+        await this.dropdown.selectOption("hilo");
+    }
+
+    async selectAscending() {
+
+        await this.dropdown.selectOption("az");
+    }
+
+    async selectDescending() {
+
+        await this.dropdown.selectOption("za");
+        
+    }
+
+
+
+
+   
 
 }
 
