@@ -15,6 +15,8 @@ test("Sort products by price low to high", async function({page}){
 
     await productsort.selectPriceLowHigh();
 
+    await expect (productsort.dropdown).toHaveValue("lohi");
+
 
 
 });
@@ -31,6 +33,8 @@ test("Sort products by price high to low", async function({page}){
     await loginpage.loginToApplication("standard_user","secret_sauce");
 
     await productsort.selectPriceHighLow();
+
+    await expect (productsort.dropdown).toHaveValue("hilo");
 
 
     
@@ -49,6 +53,8 @@ test("Sort products by A-Z", async function({page}){
 
     await productsort.selectAscending();
 
+    await expect (productsort.dropdown).toHaveValue("az");
+
     
 });
 
@@ -64,6 +70,8 @@ test("Sort products by price Z-A", async function({page}){
     await loginpage.loginToApplication("standard_user","secret_sauce");
 
     await productsort.selectDescending();
+
+    await expect (productsort.dropdown).toHaveValue("za");
 
     
 });
