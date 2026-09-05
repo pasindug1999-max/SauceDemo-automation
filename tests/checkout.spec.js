@@ -42,13 +42,15 @@ test.describe("Checkout Tests",  function(){
 
         await checkoutpage.clickFinish();
 
+        await expect(page.getByText("Thank you for your order!")).toBeVisible();
+
         await page.waitForTimeout(3000);
 
         //await page.pause();
     });
 
 
-    test(`Invalid Checkout - ${checkoutData[1].id}`, async function({page}){
+    test(`Enter checkout details wihout lastname - ${checkoutData[1].id}`, async function({page}){
 
         const checkoutpage = new Checkout(page);
 
@@ -60,7 +62,7 @@ test.describe("Checkout Tests",  function(){
 
         await checkoutpage.clickContinue();
 
-        
+        await expect(page.locator("[data-test='error']")).toHaveText("Error: Last Name is required");
 
         await page.waitForTimeout(3000);
 
@@ -77,6 +79,8 @@ test.describe("Checkout Tests",  function(){
         await checkoutpage.addCheckoutDetails(data.firstname, data.lastname, data.zipcode);
 
         await checkoutpage.clickContinue();
+
+        await expect(page.locator("[data-test='error']")).toHaveText("Error: First Name is required")
 
         
 
@@ -96,7 +100,7 @@ test.describe("Checkout Tests",  function(){
 
         await checkoutpage.clickContinue();
 
-        
+        await expect(page.locator("[data-test='error']")).toHaveText("Error: Postal Code is required");
 
         await page.waitForTimeout(3000);
 
@@ -113,7 +117,7 @@ test.describe("Checkout Tests",  function(){
 
         await checkoutpage.clickContinue();
 
-       
+        await expect(page.locator("[data-test='error']")).toHaveText("Error: First Name is required");
 
         await page.waitForTimeout(3000);
 
