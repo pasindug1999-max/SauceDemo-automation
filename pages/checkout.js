@@ -7,6 +7,7 @@ class Checkout {
         this.lastname = page.getByPlaceholder("Last Name")
         this.zipcode = page.locator("#postal-code");
         this.continue = page.locator("//input[@id='continue']");
+        this.finish = page.getByRole("Button", {name:"Finish"})
     }
 
 
@@ -26,6 +27,11 @@ class Checkout {
     async clickContinue(){
 
         await this.continue.click();
+    }
+
+    async clickFinish(){
+
+        await this.finish.click();
     }
 
 
