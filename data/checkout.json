@@ -1,0 +1,31 @@
+[
+    {
+        "firstname":"John",
+        "lastname":"Lee",
+        "zipcode":"12345"
+    },
+
+    {
+        "firstname":"John",
+        "lastname":"",
+        "zipcode":"12345"
+    },
+
+    {
+        "firstname":"",
+        "lastname":"Lee",
+        "zipcode":"12345"
+    },
+
+    {
+        "firstname":"Nade",
+        "lastname":"Silk",
+        "zipcode":""
+    },
+
+    {
+        "firstname":"",
+        "lastname":"",
+        "zipcode":""
+    }
+]
