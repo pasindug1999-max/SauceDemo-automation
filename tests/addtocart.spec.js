@@ -47,7 +47,7 @@ test("Remove a product added to cart", async function({page}){
     await expect(page.locator("//span[@class='shopping_cart_badge']")).toHaveCount(0);
 });
 
-
+// Add multiple products to cart
 test("Add multiple products to cart", async function({page}){
 
     const cartpage = new Cart(page);
@@ -56,4 +56,30 @@ test("Add multiple products to cart", async function({page}){
 
     await expect(page.locator("//span[@class='shopping_cart_badge']")).toHaveText("3");
 
+});
+
+// Verify the product price in cart
+test("Verify the product price in cart", async function({page}){
+
+    const cartpage = new Cart(page);
+
+    await cartpage.addToCart();
+    
+    await cartpage.selectcart();
+
+    await expect(page.locator("//div[@class='inventory_item_price']")).toHaveText("$29.99");
+});
+
+// Verify whether the product is displayed in the cart
+test.only("Verify the product is displayed in the cart", async function({page}){
+    
+    const cartpage = new Cart(page);
+
+    await cartpage.addToCart();
+
+    await cartpage.selectcart();
+
+    await expect(page.locator("//div[@class='cart_item']")).toHaveCount(1);
+
+    await expect(page.locator("//div[@class='inventory_item_name']")).toHaveText("Sauce Labs Backpack");
 });
