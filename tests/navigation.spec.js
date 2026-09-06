@@ -12,7 +12,7 @@ test.describe("Navigation Tests", function(){
     test.beforeEach(async function({page}){
 
         const loginpage = new Login(page);
-        const navigation = new Navigation(page);
+        
 
         await page.goto("https://www.saucedemo.com/");
 
@@ -31,6 +31,7 @@ test.describe("Navigation Tests", function(){
         await expect(navigation.about).toBeVisible();
         await expect(navigation.logout).toBeVisible();
         await expect(navigation.resetApp).toBeVisible();
+        await expect(navigation.allItems).toBeVisible();
 
         await page.waitForTimeout(3000);
     });
@@ -69,10 +70,29 @@ test.describe("Navigation Tests", function(){
 
         await navigation.openMenu();
 
-        await navigation.resetApp();
+        await navigation.resetAppState();
 
         
 
+    });
+
+    test("Close menu", async function({page}){
+
+        const navigation = new Navigation(page);
+
+        await navigation.openMenu();
+
+        await navigation.closesideMenu();
+    })
+
+
+    test("Verify whether user can navigate to All Items", async function({page}){
+
+        const navigation = new Navigation(page);
+
+        await navigation.openMenu();
+
+        await navigation.clickAllItems();
     })
 
 

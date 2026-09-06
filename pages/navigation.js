@@ -8,7 +8,7 @@ class Navigation {
         this.logout = page.locator("(//a[normalize-space()='Logout'])[1]");
         this.about = page.getByRole("link", {name:"About"});
         this.resetApp = page.getByRole("link",{name: "Reset App State"});
-        this.closeMenu = page.geyByRole("button", {name: "Close Menu"});
+        this.closeMenu = page.getByRole("button", {name: "Close Menu"});
         
     }
 
@@ -17,7 +17,7 @@ class Navigation {
         await this.menu.click();
     }
 
-    async cliclAllItems(){
+    async clickAllItems(){
 
         await this.allItems.click();
     }
