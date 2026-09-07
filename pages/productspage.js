@@ -4,6 +4,8 @@ class Products {
 
         this.page = page;
         this.dropdown = page.locator("//select[@class='product_sort_container']");
+        this.product = page.locator("//div[normalize-space()='Sauce Labs Fleece Jacket']");
+        this.back = page.locator("//button[@id='back-to-products']");
         
 
     }
@@ -27,6 +29,13 @@ class Products {
 
         await this.dropdown.selectOption("za");
         
+    }
+
+    async checkSortOrder() {
+
+        await this.product.click();
+
+        await this.back.click();
     }
 
 
