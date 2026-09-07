@@ -32,5 +32,13 @@
         "firstname":"",
         "lastname":"",
         "zipcode":""
+    },
+
+    {
+        "id":6,
+        "firstname":"John",
+        "lastname":"Lee",
+        "zipcode":"CAA123"
     }
+
 ]

@@ -123,8 +123,55 @@ test.describe("Checkout Tests",  function(){
 
 
 
+    });
+
+
+    // Bug / Defect
+    test(`Enter an invalid zipcode - ${checkoutData[5].id}`, async function({page}){
+
+        const checkoutpage = new Checkout(page);
+
+        const data = checkoutData[5];
+
+        await checkoutpage.clickCheckout();
+
+        await checkoutpage.addCheckoutDetails(data.firstname, data.lastname, data.zipcode);
+
+        await checkoutpage.clickContinue();
+
+
+        await page.waitForTimeout(3000);
     })
 
+
+});
+
+// Bug / Defect
+test.describe("Empty Cart Checkout", function() {
+
+    test("Checkout with empty cart", async ({page}) => {
+
+        const loginpage = new Login(page);
+        const cartpage = new Cart(page);
+        const checkoutpage = new Checkout(page);
+
+        await page.goto("https://www.saucedemo.com/");
+
+        await loginpage.loginToApplication(user, password);
+
+        
+        await cartpage.selectcart();
+
+        await expect(page.locator(".cart_item")).toHaveCount(0);
+
+        await checkoutpage.clickCheckout();
+
+        await checkoutpage.addCheckoutDetails(data.firstname, data.lastname, data.zipcode);
+
+        await checkoutpage.clickContinue();
+
+        await page.waitForTimeout(3000);
+    });
 
 });
 
