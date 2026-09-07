@@ -1,6 +1,6 @@
 [
     {
-        "id":1,
+        "id":"Valid Login",
         "username":"standard_user",
         "password":"secret_sauce",
         "valid":true
@@ -8,14 +8,14 @@
     },
 
     {
-        "id":2,
+        "id":"Invalid Username",
         "username":"abcuser",
         "password":"secret_sauce",
         "valid":false
     },
 
     {
-        "id":3,
+        "id":"Invalid Password",
         "username":"standard_user",
         "password":"abc123",
         "valid":false
@@ -23,14 +23,14 @@
     },
 
     {
-        "id":4,
+        "id":"Invalid username and password",
         "username":"xyzuser",
         "password":"key123",
         "valid":false
     },
 
     {
-        "id":5,
+        "id":"Empty fields",
         "username":"",
         "password":"",
         "valid":false
