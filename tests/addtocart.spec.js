@@ -7,79 +7,90 @@ const user = "standard_user";
 const password = "secret_sauce";
 
 
-test.beforeEach(async ({page})=>{
-
-    const loginpage = new Login(page);
-
-    await page.goto("https://www.saucedemo.com/");
-
-    await loginpage.loginToApplication(user,password);
-
-});
+test.describe("Add to Cart Tests", function(){
 
 
-// Add a single product to cart
 
-test("Add a single product to cart", async function({page}){
+    test.beforeEach(async ({page})=>{
 
-    const cartpage = new Cart(page);
+        const loginpage = new Login(page);
 
-    await cartpage.addToCart();
+        await page.goto("https://www.saucedemo.com/");
 
-    await expect(page.locator("//span[@class='shopping_cart_badge']")).toHaveCount(1);
+        await loginpage.loginToApplication(user,password);
+
+    });
+
+
+    // Add a single product to cart
+
+    test("Add a single product to cart", async function({page}){
+
+        const cartpage = new Cart(page);
+
+        await cartpage.addToCart();
+
+        await expect(page.locator("//span[@class='shopping_cart_badge']")).toHaveCount(1);
 
     //await page.waitForTimeout(3000);
 
-});
+    });
 
-// Remove a product from cart
+    // Remove a product from cart
 
-test("Remove a product added to cart", async function({page}){
+    test("Remove a product added to cart", async function({page}){
 
-    const cartpage = new Cart(page);
+        const cartpage = new Cart(page);
 
-    await cartpage.addToCart();
+        await cartpage.addToCart();
 
-    await cartpage.removeFromCart();
+        await cartpage.removeFromCart();
 
-    //await  page.waitForTimeout(3000);
+        //await  page.waitForTimeout(3000);
 
-    await expect(page.locator("//span[@class='shopping_cart_badge']")).toHaveCount(0);
-});
+        await expect(page.locator("//span[@class='shopping_cart_badge']")).toHaveCount(0);
 
-// Add multiple products to cart
-test("Add multiple products to cart", async function({page}){
+    });
 
-    const cartpage = new Cart(page);
+    // Add multiple products to cart
+    test("Add multiple products to cart", async function({page}){
 
-    await cartpage.addMultipleProducts();
+        const cartpage = new Cart(page);
 
-    await expect(page.locator("//span[@class='shopping_cart_badge']")).toHaveText("3");
+        await cartpage.addMultipleProducts();
 
-});
+        await expect(page.locator("//span[@class='shopping_cart_badge']")).toHaveText("3");
 
-// Verify the product price in cart
-test("Verify the product price in cart", async function({page}){
+    });
 
-    const cartpage = new Cart(page);
+    // Verify the product price in cart
+    test("Verify the product price in cart", async function({page}){
 
-    await cartpage.addToCart();
+        const cartpage = new Cart(page);
+
+        await cartpage.addToCart();
     
-    await cartpage.selectcart();
+        await cartpage.selectcart();
 
-    await expect(page.locator("//div[@class='inventory_item_price']")).toHaveText("$29.99");
-});
+        await expect(page.locator("//div[@class='inventory_item_price']")).toHaveText("$29.99");
 
-// Verify whether the product is displayed in the cart
-test.only("Verify the product is displayed in the cart", async function({page}){
+    });
+
+    // Verify whether the product is displayed in the cart
+    test("Verify the product is displayed in the cart", async function({page}){
     
-    const cartpage = new Cart(page);
+        const cartpage = new Cart(page);
 
-    await cartpage.addToCart();
+        await cartpage.addToCart();
 
-    await cartpage.selectcart();
+        await cartpage.selectcart();
 
-    await expect(page.locator("//div[@class='cart_item']")).toHaveCount(1);
+        await expect(page.locator("//div[@class='cart_item']")).toHaveCount(1);
 
-    await expect(page.locator("//div[@class='inventory_item_name']")).toHaveText("Sauce Labs Backpack");
+        await expect(page.locator("//div[@class='inventory_item_name']")).toHaveText("Sauce Labs Backpack");
+
+    });
+
+    
+
 });
