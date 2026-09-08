@@ -22,7 +22,7 @@ test.describe("Add to Cart Tests", function(){
     });
 
 
-    // Add a single product to cart
+    
 
     test("Add a single product to cart", async function({page}){
 
@@ -36,7 +36,7 @@ test.describe("Add to Cart Tests", function(){
 
     });
 
-    // Remove a product from cart
+    
 
     test("Remove a product added to cart", async function({page}){
 
@@ -52,7 +52,7 @@ test.describe("Add to Cart Tests", function(){
 
     });
 
-    // Add multiple products to cart
+    
     test("Add multiple products to cart", async function({page}){
 
         const cartpage = new Cart(page);
@@ -63,7 +63,7 @@ test.describe("Add to Cart Tests", function(){
 
     });
 
-    // Verify the product price in cart
+    
     test("Verify the product price in cart", async function({page}){
 
         const cartpage = new Cart(page);
@@ -76,7 +76,7 @@ test.describe("Add to Cart Tests", function(){
 
     });
 
-    // Verify whether the product is displayed in the cart
+    
     test("Verify the product is displayed in the cart", async function({page}){
     
         const cartpage = new Cart(page);
