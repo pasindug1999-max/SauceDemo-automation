@@ -72,15 +72,17 @@ test.describe("Product Sort tests", function(){
     });
 
     // Bug/Defect
-    test.only("Verify whether the selected sorted order is saved", async function({page}){
+    test("Verify whether the selected sorted order is saved", async function({page}){
 
         const productsort = new Products(page);
 
         await productsort.selectDescending();
 
-        await page.waitForTimeout(3000);
+        
 
         await productsort.checkSortOrder();
+
+        
 
 
     });
