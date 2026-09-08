@@ -44,9 +44,9 @@ test.describe("Checkout Tests",  function(){
 
         await expect(page.getByText("Thank you for your order!")).toBeVisible();
 
-        await page.waitForTimeout(3000);
+        
 
-        //await page.pause();
+        
     });
 
 
@@ -64,7 +64,7 @@ test.describe("Checkout Tests",  function(){
 
         await expect(page.locator("[data-test='error']")).toHaveText("Error: Last Name is required");
 
-        await page.waitForTimeout(3000);
+        
 
     });
 
@@ -84,8 +84,6 @@ test.describe("Checkout Tests",  function(){
 
         
 
-        await page.waitForTimeout(3000);
-
 
     });
 
@@ -102,7 +100,7 @@ test.describe("Checkout Tests",  function(){
 
         await expect(page.locator("[data-test='error']")).toHaveText("Error: Postal Code is required");
 
-        await page.waitForTimeout(3000);
+        
 
     })
 
@@ -119,7 +117,7 @@ test.describe("Checkout Tests",  function(){
 
         await expect(page.locator("[data-test='error']")).toHaveText("Error: First Name is required");
 
-        await page.waitForTimeout(3000);
+        
 
 
 
@@ -139,8 +137,12 @@ test.describe("Checkout Tests",  function(){
 
         await checkoutpage.clickContinue();
 
+        const errorMessage = page.locator('[data-test="error"]');
 
-        await page.waitForTimeout(3000);
+        await expect(errorMessage).toBeVisible();
+
+
+        
     })
 
 
@@ -155,6 +157,8 @@ test.describe("Empty Cart Checkout", function() {
         const cartpage = new Cart(page);
         const checkoutpage = new Checkout(page);
 
+        
+
         await page.goto("https://www.saucedemo.com/");
 
         await loginpage.loginToApplication(user, password);
@@ -166,11 +170,13 @@ test.describe("Empty Cart Checkout", function() {
 
         await checkoutpage.clickCheckout();
 
-        await checkoutpage.addCheckoutDetails(data.firstname, data.lastname, data.zipcode);
+        await expect(page.getByText("Your cart is empty please add some products")).toBeVisible();
 
-        await checkoutpage.clickContinue();
+        await expect(page).not.toHaveURL("https://www.saucedemo.com/checkout-step-one.html");
 
-        await page.waitForTimeout(3000);
+        
+
+        // await page.waitForTimeout(3000);
     });
 
 });

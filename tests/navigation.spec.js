@@ -33,7 +33,7 @@ test.describe("Navigation Tests", function(){
         await expect(navigation.resetApp).toBeVisible();
         await expect(navigation.allItems).toBeVisible();
 
-        await page.waitForTimeout(3000);
+        // await page.waitForTimeout(3000);
     });
 
     test("Verify whether user can Logout", async function({page}){
@@ -46,7 +46,7 @@ test.describe("Navigation Tests", function(){
 
         await expect(page).toHaveURL("https://www.saucedemo.com/");
 
-        await page.waitForTimeout(3000);
+        // await page.waitForTimeout(3000);
 
 
     });
@@ -61,7 +61,7 @@ test.describe("Navigation Tests", function(){
 
         await expect(page).toHaveURL(/saucelabs.com/);
 
-        await page.waitForTimeout(3000);
+        //await page.waitForTimeout(3000);
     });
 
     test("Verify the App Reset state", async function({page}){
@@ -83,7 +83,7 @@ test.describe("Navigation Tests", function(){
         await navigation.openMenu();
 
         await navigation.closesideMenu();
-    })
+    });
 
 
     test("Verify whether user can navigate to All Items", async function({page}){

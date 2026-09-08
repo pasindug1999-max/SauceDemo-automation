@@ -82,7 +82,7 @@ test.describe("Product Sort tests", function(){
 
         await productsort.checkSortOrder();
 
-        
+        await expect(productsort.dropdown).toHaveValue("za");
 
 
     });
